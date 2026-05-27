@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julio Elorza — Brewmaster · Vermutero · Consultor</title>
+<meta name="description" content="Consultor especializado en cerveza artesanal y vermut. Fundador de Ofrenda Vermut y Atelier Rosso. Talleres y formación en Buenos Aires.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+:root {
+  --crema:     #f2ede4;
+  --blanco:    #ffffff;
+  --verde:     #1a3a2a;
+  --verde-med: #254d38;
+  --terracota: #e05a2b;
+  --negro:     #111111;
+  --gris-claro:#e8e3da;
+  --gris-med:  #c5bfb3;
+  --texto:     #1a1a1a;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--crema);
+  color: var(--texto);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 4rem;
+  background: var(--crema);
+  border-bottom: 1px solid var(--gris-med);
+}
+.nav-logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.15rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--negro);
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.78rem; letter-spacing: 0.1em;
+  color: var(--negro); text-decoration: none; opacity: 0.7;
+  transition: opacity 0.2s, color 0.2s;
+}
+.nav-links a:hover { opacity: 1; color: var(--terracota); }
+.nav-cta {
+  background: var(--negro); color: var(--blanco);
+  padding: 0.6rem 1.6rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
+  text-decoration: none; font-weight: 500;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--verde); }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  padding-top: 65px;
+  background: var(--crema);
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 5rem 4rem 5rem 4rem;
+}
+.hero-eyebrow {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.9rem; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 1rem; line-height: 1.4;
+}
+.hero-titulo {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(4rem, 8vw, 7.5rem);
+  font-weight: 700; line-height: 0.9;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin-bottom: 1.5rem;
+}
+.hero-cargo {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.85rem; letter-spacing: 0.08em;
+  color: rgba(26,26,26,0.5);
+  margin-bottom: 2.5rem;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.hero-cargo::before {
+  content: ''; display: inline-block;
+  width: 30px; height: 2px; background: var(--terracota);
+}
+.hero-bajada {
+  font-size: 1rem; line-height: 1.85; font-weight: 300;
+  color: rgba(26,26,26,0.65);
+  max-width: 440px; margin-bottom: 3rem;
+}
+.hero-bajada strong { color: var(--verde); font-weight: 700; }
+.hero-acciones { display: flex; gap: 1rem; }
+.btn-negro {
+  background: var(--negro); color: var(--blanco);
+  padding: 0.9rem 2rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+  text-decoration: none; font-weight: 500;
+  transition: background 0.2s;
+}
+.btn-negro:hover { background: var(--verde); }
+.btn-borde {
+  border: 2px solid var(--negro); color: var(--negro);
+  padding: 0.9rem 2rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+  text-decoration: none; font-weight: 500;
+  transition: all 0.2s;
+}
+.btn-borde:hover { background: var(--negro); color: var(--blanco); }
+
+.hero-right {
+  position: relative; overflow: hidden;
+  background: var(--gris-claro);
+}
+.hero-right img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  filter: grayscale(100%) contrast(1.05);
+}
+.hero-tags {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: var(--verde);
+  display: flex; justify-content: space-around; flex-wrap: wrap;
+  padding: 1rem;
+}
+.hero-tag {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.7); padding: 0.3rem 0.5rem;
+}
+
+/* ── BANDA ── */
+.banda {
+  background: var(--verde);
+  display: flex; justify-content: center; align-items: center;
+  gap: 3rem; padding: 1.2rem 3rem; flex-wrap: wrap;
+}
+.banda span {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+}
+.banda-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--terracota); }
+
+/* ── SECCIÓN GENÉRICA ── */
+.seccion-pad { padding: 7rem 4rem; }
+.label {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--terracota); margin-bottom: 0.8rem; display: block;
+}
+.titulo-grande {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700; text-transform: uppercase;
+  color: var(--verde); line-height: 1;
+  margin-bottom: 1rem;
+}
+.linea-verde { width: 50px; height: 3px; background: var(--verde); margin: 1.2rem 0; }
+.linea-terracota { width: 50px; height: 3px; background: var(--terracota); margin: 1.2rem 0; }
+.cuerpo {
+  font-size: 0.9rem; line-height: 1.85; font-weight: 300;
+  color: rgba(26,26,26,0.6); max-width: 520px;
+}
+.cuerpo strong { color: var(--verde); font-weight: 700; }
+
+/* ── PILARES ── */
+#servicios { background: var(--crema); }
+.pilares-intro {
+  max-width: 1200px; margin: 0 auto 4rem;
+  display: flex; justify-content: space-between; align-items: flex-end;
+  flex-wrap: wrap; gap: 2rem;
+}
+.pilares-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+}
+.pilar {
+  background: var(--blanco);
+  border-top: 4px solid var(--gris-claro);
+  padding: 2.5rem 2rem;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.pilar:hover { border-top-color: var(--terracota); transform: translateY(-4px); }
+.pilar-num {
+  font-family: 'Oswald', sans-serif;
+  font-size: 3.5rem; font-weight: 700;
+  color: var(--gris-claro); line-height: 1; margin-bottom: 1rem;
+}
+.pilar-titulo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.4rem; font-weight: 600; text-transform: uppercase;
+  color: var(--verde); margin-bottom: 0.4rem;
+}
+.pilar-sub {
+  font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--terracota); margin-bottom: 1.2rem;
+}
+.pilar-desc { font-size: 0.82rem; line-height: 1.8; color: rgba(26,26,26,0.55); }
+
+/* ── OFRENDA ── */
+#ofrenda {
+  background: var(--verde);
+}
+.ofrenda-fila {
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.ofrenda-fila.invertida .ofrenda-img { order: 2; }
+.ofrenda-fila.invertida .ofrenda-contenido { order: 1; }
+.ofrenda-separador {
+  height: 2px;
+  background: linear-gradient(to right, transparent, rgba(255,255,255,0.15), transparent);
+}
+.ofrenda-img { position: relative; overflow: hidden; min-height: 500px; }
+.ofrenda-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(100%) brightness(0.6);
+}
+.ofrenda-contenido {
+  padding: 6rem 4rem;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.ofrenda-marca {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 700; text-transform: uppercase;
+  color: var(--blanco); line-height: 0.95;
+  margin-bottom: 0.2em;
+}
+.ofrenda-marca span { color: var(--terracota); }
+.ofrenda-sub {
+  font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-bottom: 2rem;
+}
+.ofrenda-texto {
+  font-size: 0.9rem; line-height: 1.85; font-weight: 300;
+  color: rgba(255,255,255,0.65); margin-bottom: 2.5rem; max-width: 440px;
+}
+.ofrenda-texto strong { color: rgba(255,255,255,0.9); font-weight: 400; }
+.btn-blanco {
+  display: inline-block;
+  background: var(--blanco); color: var(--verde);
+  padding: 0.9rem 2rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+  text-decoration: none; font-weight: 600;
+  transition: background 0.2s;
+}
+.btn-blanco:hover { background: var(--crema); }
+.btn-borde-blanco {
+  display: inline-block;
+  border: 2px solid rgba(255,255,255,0.4); color: var(--blanco);
+  padding: 0.9rem 2rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase;
+  text-decoration: none; font-weight: 500; margin-left: 1rem;
+  transition: all 0.2s;
+}
+.btn-borde-blanco:hover { border-color: var(--blanco); background: rgba(255,255,255,0.08); }
+
+/* ── ATELIER ── */
+#atelier { background: var(--crema); }
+.atelier-header {
+  max-width: 1200px; margin: 0 auto 4rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end;
+}
+.atelier-logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 700; text-transform: uppercase;
+  color: var(--verde); line-height: 1;
+}
+.atelier-logo span { color: var(--terracota); }
+.atelier-cards {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem;
+}
+.atelier-card {
+  background: var(--blanco);
+  padding: 2.5rem 2rem;
+  border-left: 4px solid var(--terracota);
+  transition: transform 0.3s;
+}
+.atelier-card:hover { transform: translateY(-4px); }
+.atelier-card-titulo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2rem; font-weight: 600; text-transform: uppercase;
+  color: var(--verde); margin-bottom: 1rem;
+}
+.atelier-card-texto { font-size: 0.82rem; line-height: 1.8; color: rgba(26,26,26,0.55); }
+.atelier-cta {
+  max-width: 1200px; margin: 3rem auto 0;
+  background: var(--negro); padding: 3rem 4rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;
+}
+.atelier-cta-text {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5rem; font-weight: 600; text-transform: uppercase;
+  color: var(--blanco);
+}
+.atelier-cta-text span { color: var(--terracota); }
+
+/* ── TALLERES ── */
+#talleres { background: var(--blanco); }
+.talleres-inner { max-width: 1200px; margin: 0 auto; }
+.talleres-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 4rem; }
+.taller {
+  background: var(--crema);
+  padding: 3rem 2.5rem;
+  transition: background 0.3s;
+}
+.taller:hover { background: var(--gris-claro); }
+.taller.principal {
+  grid-column: 1 / -1;
+  background: var(--verde);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding: 4rem;
+}
+.taller-badge {
+  display: inline-block;
+  background: var(--terracota); color: var(--blanco);
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 0.3rem 0.8rem; font-weight: 500; margin-bottom: 1.2rem;
+}
+.taller-titulo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.8rem; font-weight: 700; text-transform: uppercase;
+  color: var(--verde); margin-bottom: 0.4rem; line-height: 1.1;
+}
+.taller.principal .taller-titulo { color: var(--blanco); }
+.taller-sub {
+  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--terracota); margin-bottom: 1.2rem;
+}
+.taller.principal .taller-sub { color: rgba(255,255,255,0.5); }
+.taller-desc {
+  font-size: 0.82rem; line-height: 1.8;
+  color: rgba(26,26,26,0.55); margin-bottom: 1.5rem;
+}
+.taller.principal .taller-desc { color: rgba(255,255,255,0.6); }
+.taller-modulos { list-style: none; }
+.taller-modulos li {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex; gap: 0.8rem;
+}
+.taller-modulos li::before { content: '→'; color: var(--terracota); flex-shrink: 0; }
+
+/* ── CONTACTO ── */
+#contacto {
+  background: var(--crema);
+  display: grid; grid-template-columns: 1fr 1fr;
+}
+.contacto-img { position: relative; overflow: hidden; min-height: 500px; }
+.contacto-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: grayscale(100%) brightness(0.65);
+}
+.contacto-contenido {
+  padding: 6rem 4rem;
+  display: flex; flex-direction: column; justify-content: center;
+  background: var(--negro);
+}
+.contacto-titulo {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(2.2rem, 4vw, 3.5rem);
+  font-weight: 700; text-transform: uppercase;
+  color: var(--blanco); line-height: 1; margin-bottom: 0.3em;
+}
+.contacto-titulo span { color: var(--terracota); }
+.contacto-sub {
+  font-size: 0.85rem; line-height: 1.8; font-weight: 300;
+  color: rgba(255,255,255,0.45); margin-bottom: 2.5rem; max-width: 380px;
+}
+.form-campo {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-left: 3px solid var(--terracota);
+  color: var(--blanco);
+  padding: 0.85rem 1rem;
+  font-family: 'Lato', sans-serif; font-size: 0.85rem;
+  outline: none; margin-bottom: 1rem;
+  transition: border-color 0.2s;
+}
+.form-campo:focus { border-color: rgba(255,255,255,0.4); }
+.form-campo::placeholder { color: rgba(255,255,255,0.3); }
+textarea.form-campo { height: 100px; resize: none; }
+.btn-enviar {
+  background: var(--terracota); color: var(--blanco);
+  padding: 0.9rem 2rem; width: 100%;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+  font-weight: 600; border: none; cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-enviar:hover { background: #c44e22; }
+.redes {
+  display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.8rem;
+}
+.red {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.35); text-decoration: none;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: all 0.2s;
+}
+.red:hover { color: var(--blanco); border-color: rgba(255,255,255,0.4); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--negro);
+  border-top: 3px solid var(--terracota);
+  padding: 1.8rem 4rem;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem;
+}
+footer p {
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.2);
+}
+footer a { color: var(--terracota); text-decoration: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.2rem; }
+  .nav-links { display: none; }
+  #hero, #contacto { grid-template-columns: 1fr; }
+  .ofrenda-fila, .ofrenda-fila.invertida { grid-template-columns: 1fr; }
+  .ofrenda-fila.invertida .ofrenda-img { order: 0; }
+  .ofrenda-fila.invertida .ofrenda-contenido { order: 1; }
+  .hero-right { height: 60vw; }
+  .hero-left { padding: 5rem 1.5rem 3rem; }
+  .seccion-pad { padding: 5rem 1.5rem; }
+  .pilares-intro, .pilares-grid, .atelier-header, .atelier-cards, .talleres-grid { grid-template-columns: 1fr; }
+  .taller.principal { grid-column: auto; grid-template-columns: 1fr; gap: 2rem; padding: 2.5rem; }
+  .ofrenda-img, .contacto-img { min-height: 300px; }
+  footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+  .atelier-cta { flex-direction: column; }
+  .btn-borde-blanco { margin-left: 0; margin-top: 0.8rem; display: inline-block; }
+}
+
+/* ── REVEAL ── */
+.reveal {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Julio Elorza</a>
+  <ul class="nav-links">
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#ofrenda">Ofrenda Vermut</a></li>
+    <li><a href="#atelier">Atelier Rosso</a></li>
+    <li><a href="#talleres">Talleres</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Consultá ahora</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Especialista en producción de</p>
+    <h1 class="hero-titulo">Cerveza<br>& Vermut<br>Artesanal</h1>
+    <p class="hero-cargo">Brewmaster · Vermutero · Consultor</p>
+    <p class="hero-bajada">
+      Transformando la pasión por las bebidas artesanales en <strong>negocios rentables, marcas sólidas y productos de autor</strong>. Online y presencial desde Buenos Aires.
+    </p>
+    <div class="hero-acciones">
+      <a href="#servicios" class="btn-negro">Ver servicios</a>
+      <a href="#contacto" class="btn-borde">Contacto</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://julioelorza.com/wp-content/uploads/2023/10/dclassic-2023-09-30-141830.266-683x1024.jpg" alt="Julio Elorza">
+    <div class="hero-tags">
+      <span class="hero-tag">Consultoría Cervecera</span>
+      <span class="hero-tag">Ofrenda Vermut</span>
+      <span class="hero-tag">Atelier Rosso</span>
+      <span class="hero-tag">Talleres</span>
+    </div>
+  </div>
+</section>
+
+<!-- BANDA -->
+<div class="banda">
+  <span>Consultoría Cervecera</span>
+  <div class="banda-dot"></div>
+  <span>Vermut Artesanal</span>
+  <div class="banda-dot"></div>
+  <span>Atelier Rosso</span>
+  <div class="banda-dot"></div>
+  <span>Talleres & Maestría</span>
+  <div class="banda-dot"></div>
+  <span>Buenos Aires · Argentina</span>
+</div>
+
+<!-- SERVICIOS -->
+<section id="servicios" class="seccion-pad">
+  <div class="pilares-intro">
+    <div>
+      <span class="label">¿En qué puedo ayudarte?</span>
+      <h2 class="titulo-grande">Tres<br>especialidades</h2>
+      <div class="linea-terracota"></div>
+    </div>
+    <p class="cuerpo" style="margin:0;">
+      Desde la optimización de una microcervecería hasta el diseño de tu propio vermut de autor — cada proyecto recibe el mismo nivel de rigor técnico y pasión artesanal.
+    </p>
+  </div>
+  <div class="pilares-grid">
+    <div class="pilar reveal">
+      <div class="pilar-num">01</div>
+      <h3 class="pilar-titulo">Consultoría Cervecera</h3>
+      <p class="pilar-sub">Home Brewers · Microcervecerías</p>
+      <p class="pilar-desc">Optimización de procesos, diseño de recetas, ingeniería de planta, análisis sensorial, legislación y gerenciamiento, refrigeración y construcción de marca. Online o presencial.</p>
+    </div>
+    <div class="pilar reveal">
+      <div class="pilar-num">02</div>
+      <h3 class="pilar-titulo">Vermut Artesanal</h3>
+      <p class="pilar-sub">Ofrenda Vermut · Atelier Rosso</p>
+      <p class="pilar-desc">Producción y comercialización de vermut rosso de autor. Desarrollo de recetas exclusivas para bares, restaurantes y emprendedores. Tu vermut de la casa, con identidad propia.</p>
+    </div>
+    <div class="pilar reveal">
+      <div class="pilar-num">03</div>
+      <h3 class="pilar-titulo">Talleres & Maestría</h3>
+      <p class="pilar-sub">Presenciales · Online · Grupos</p>
+      <p class="pilar-desc">Maestría en Vermut Artesanal, cursos de cerveza para home brewers y experiencias para grupos y empresas. Conocimiento técnico aplicable desde el primer día.</p>
+    </div>
+  </div>
+</section>
+
+<!-- OFRENDA VERMUT -->
+<section id="ofrenda">
+
+  <!-- ROSSO -->
+  <div class="ofrenda-fila">
+    <div class="ofrenda-img">
+      <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=800&q=80" alt="Ofrenda Vermut Rosso servido" style="object-position:center center; filter:grayscale(100%) brightness(0.6) contrast(1.05);">
+    </div>
+    <div class="ofrenda-contenido">
+      <span class="label" style="color:rgba(255,255,255,0.4);">Mi marca de vermut</span>
+      <h2 class="ofrenda-marca">Ofrenda<br><span>Vermut</span></h2>
+      <p class="ofrenda-sub">Vermut Rosso Artesanal · @ofrendavermut</p>
+      <p class="ofrenda-texto">
+        Un Rosso elaborado con <strong>base Malbec</strong>, tinturas propias de ajenjo, enebro, cardamomo, hibiscus y cáscara de naranja. Cada lote producido artesanalmente con trazabilidad total — desde los botánicos hasta el embotellado.
+      </p>
+      <p class="ofrenda-texto">
+        Un vermut de carácter definido, con amargor equilibrado y perfil botánico complejo. El aperitivo porteño hecho con rigor científico y alma artesanal.
+      </p>
+      <div>
+        <a href="https://wa.me/5491128374474" target="_blank" class="btn-blanco">Disponibilidad y pedidos</a>
+        <a href="https://www.instagram.com/ofrendavermut/" target="_blank" class="btn-borde-blanco">Ver en Instagram</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ofrenda-separador"></div>
+
+  <!-- BIANCO -->
+  <div class="ofrenda-fila invertida">
+    <div class="ofrenda-img">
+      <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=800&q=80" alt="Ofrenda Vermut Bianco servido" style="object-position:center center; filter:grayscale(100%) brightness(0.65) contrast(1.05);">
+    </div>
+    <div class="ofrenda-contenido">
+      <span class="label" style="color:rgba(255,255,255,0.4);">Mi marca de vermut</span>
+      <h2 class="ofrenda-marca">Ofrenda<br><span>Vermut</span></h2>
+      <p class="ofrenda-sub">Vermut Bianco Artesanal · @ofrendavermut</p>
+      <p class="ofrenda-texto">
+        Un Bianco elaborado con <strong>base Chenín Chardonnay</strong>, tinturas propias de lavanda, manzanilla, tomillo fresco, enebro, cardamomo, y cáscara de naranja, pomelo, limón y mandarina. Cada lote producido artesanalmente con trazabilidad total — desde los botánicos hasta el embotellado.
+      </p>
+      <p class="ofrenda-texto">
+        Un vermut de carácter refrescante con finos perfiles florales y cítricos, con amargor equilibrado y perfil botánico complejo. El aperitivo inspirado para disfrutar las cálidas noches porteñas. Hecho con esmero, cuidando su calidad artesanal.
+      </p>
+      <div>
+        <a href="https://wa.me/5491128374474" target="_blank" class="btn-blanco">Disponibilidad y pedidos</a>
+        <a href="https://www.instagram.com/ofrendavermut/" target="_blank" class="btn-borde-blanco">Ver en Instagram</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ATELIER ROSSO -->
+<section id="atelier" class="seccion-pad">
+  <div class="atelier-header">
+    <div>
+      <span class="label">Estudio de desarrollo de recetas</span>
+      <h2 class="atelier-logo">Atelier<br><span>Rosso</span></h2>
+      <div class="linea-terracota"></div>
+      <a href="https://www.instagram.com/atelierrosso.ba/" target="_blank" class="btn-negro" style="display:inline-block; font-size:0.68rem; margin-top:0.5rem;">Ver Atelier Rosso en Instagram</a>
+    </div>
+    <p class="cuerpo" style="margin:0;">
+      Desarrollamos recetas de vermut <strong>personalizadas y exclusivas</strong> para bares, restaurantes y emprendedores. Tu <em>Vermut de la Casa</em>, con identidad propia y fórmula irrepetible — con hasta un 60% menos de costo que las marcas premium.
+    </p>
+  </div>
+  <div class="atelier-cards">
+    <div class="atelier-card reveal">
+      <h4 class="atelier-card-titulo">Fórmula Exclusiva</h4>
+      <p class="atelier-card-texto">Diseño completo de tu receta desde cero. Selección de botánicos, validación sensorial y entrega de receta técnica con trazabilidad total. Tu fórmula es tuya — nadie más puede replicarla.</p>
+    </div>
+    <div class="atelier-card reveal">
+      <h4 class="atelier-card-titulo">Vermut & Gastronomía</h4>
+      <p class="atelier-card-texto">Analizamos los platos insignia de tu carta para desarrollar una fórmula de vermut que potencie cada sabor. El resultado: un aperitivo de maridaje perfecto que eleva la experiencia sensorial de tus comensales y distingue tu propuesta gastronómica.</p>
+    </div>
+    <div class="atelier-card reveal">
+      <h4 class="atelier-card-titulo">Seguimiento Continuo</h4>
+      <p class="atelier-card-texto">Control de consistencia lote a lote. Ajuste de fórmulas y soporte técnico permanente para garantizar siempre el mismo perfil en cada producción.</p>
+    </div>
+  </div>
+  <div class="atelier-cta">
+    <p class="atelier-cta-text">¿Querés tu propio<br><span>vermut de autor?</span></p>
+    <a href="https://tidycal.com/elorzajazz/discovery-call" target="_blank" class="btn-blanco" style="background:var(--terracota); color:var(--blanco);">Pedir consulta gratuita</a>
+  </div>
+</section>
+
+<!-- TALLERES -->
+<section id="talleres" class="seccion-pad">
+  <div class="talleres-inner">
+    <span class="label">Formación profesional</span>
+    <h2 class="titulo-grande">Talleres &<br>Maestría</h2>
+    <div class="linea-verde"></div>
+    <div class="talleres-grid">
+      <div class="taller principal">
+        <div>
+          <span class="taller-badge">★ Curso Insignia</span>
+          <h3 class="taller-titulo">Maestría en Vermut Artesanal</h3>
+          <p class="taller-sub">Cursos Online y Presencial · Buenos Aires · Cupos limitados</p>
+          <p class="taller-desc">El programa técnico más completo para dominar la elaboración profesional de vermut. De los fundamentos históricos al embotellado y control de calidad.</p>
+          <a href="https://wa.me/541128374474?text=Hola%21%20Quisiera%20recibir%20informaci%C3%B3n%20sobre%20las%20capacitaciones%20Online" target="_blank" class="btn-blanco" style="display:inline-block; font-size:0.72rem;">Consultar próxima fecha</a>
+        </div>
+        <div>
+          <ul class="taller-modulos">
+            <li>Historia, definición y marco legal del vermut</li>
+            <li>Extracción alcohólica y procesamiento de botánicos</li>
+            <li>Formulación, blending y ensamblaje</li>
+            <li>Clarificación, embotellado y control de calidad</li>
+            <li>ABV, pH y Brix — los parámetros críticos</li>
+            <li>Costeo y registro RNPA para comercialización</li>
+          </ul>
+        </div>
+      </div>
+      <div class="taller reveal">
+        <span class="taller-badge">Taller Práctico</span>
+        <h3 class="taller-titulo">Elaboración de Vermut</h3>
+        <p class="taller-sub">Presencial · Grupos de 8 a 20 personas</p>
+        <p class="taller-desc">Jornada de 2-3 horas donde elaborás tu propia botella de vermut y te la llevás a casa. Ideal para iniciarse, eventos privados y team building corporativo.</p>
+        <a href="https://wa.me/541128374474?text=Hola%21%20Quisiera%20recibir%20informaci%C3%B3n%20sobre%20las%20capacitaciones%20Online" target="_blank" class="btn-negro" style="display:inline-block; font-size:0.72rem; margin-top:1rem;">Reservar fecha</a>
+      </div>
+      <div class="taller reveal">
+        <span class="taller-badge">Online</span>
+        <h3 class="taller-titulo">Taller Online de Vermut</h3>
+        <p class="taller-sub">Online · Individual y grupal · 8 hs académicas</p>
+        <p class="taller-desc">Un aprendizaje mucho más profundo sobre el mundo del vermut artesanal. Estudiamos su historia, estilos internacionales y técnicas de producción, y cerramos con un taller práctico a distancia como evaluación final. Dirigido a entusiastas, emprendedores y futuros profesionales en la elaboración de vermut.</p>
+        <a href="https://wa.me/541128374474?text=Hola%21%20Quisiera%20recibir%20informaci%C3%B3n%20sobre%20las%20capacitaciones%20Online" target="_blank" class="btn-negro" style="display:inline-block; font-size:0.72rem; margin-top:1rem;">Consultar inscripción</a>
+      </div>
+      <div class="taller reveal">
+        <span class="taller-badge">Online</span>
+        <h3 class="taller-titulo">Curso Online de Cerveza</h3>
+        <p class="taller-sub">Online · Individual y/o grupal · Módulos secuenciales</p>
+        <p class="taller-desc">Un recorrido completo y en profundidad por todos los aspectos de la producción cervecera: Agua, Maltas, Lúpulos, Levaduras y Procesos. Clases teóricas y prácticas en módulos secuenciales diseñados para convertir la pasión en conocimiento profesional. Dirigido a emprendedores, Home Brewers y futuros Brewmasters.</p>
+        <a href="https://wa.me/541128374474?text=Hola%21%20Quisiera%20recibir%20informaci%C3%B3n%20sobre%20las%20capacitaciones%20Online" target="_blank" class="btn-negro" style="display:inline-block; font-size:0.72rem; margin-top:1rem;">Consultar inscripción</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTORÍA CERVECERA -->
+<section id="consultoria" class="seccion-pad" style="background:var(--blanco);">
+  <div class="talleres-inner">
+    <span class="label">Asesoramiento profesional</span>
+    <h2 class="titulo-grande">Consultoría<br>Cervecera</h2>
+    <div class="linea-verde"></div>
+    <p class="cuerpo" style="max-width:700px; margin-bottom:3rem;">
+      Un servicio integral de asesoramiento para cervecerías artesanales y microcervecerías que buscan optimizar cada aspecto de su operación — desde la receta hasta la rentabilidad. Online o presencial, adaptado a cada proyecto.
+    </p>
+    <div class="pilares-grid">
+      <div class="pilar reveal">
+        <div class="pilar-num">01</div>
+        <h3 class="pilar-titulo">Producción & Técnica</h3>
+        <p class="pilar-sub">Recetas · Procesos · Calidad</p>
+        <p class="pilar-desc">Optimización de recetas y eficiencia productiva. Control de calidad microbiológico y sensorial. Asesoría en diseño de planta, selección de maquinaria y mejora continua del proceso.</p>
+      </div>
+      <div class="pilar reveal">
+        <div class="pilar-num">02</div>
+        <h3 class="pilar-titulo">Operaciones & Legalidad</h3>
+        <p class="pilar-sub">Costos · Habilitaciones · Gestión</p>
+        <p class="pilar-desc">Gestión de costos de producción, trámites para habilitaciones sanitarias y legales, optimización del flujo de trabajo y asesoramiento en gestión sostenible de residuos.</p>
+      </div>
+      <div class="pilar reveal">
+        <div class="pilar-num">03</div>
+        <h3 class="pilar-titulo">Estrategia de Negocio</h3>
+        <p class="pilar-sub">Marca · Distribución · Taproom</p>
+        <p class="pilar-desc">Planes de viabilidad financiera, posicionamiento de marca, estrategias de distribución — venta directa, bares o supermercados — y gestión profesional del taproom.</p>
+      </div>
+      <div class="pilar reveal">
+        <div class="pilar-num">04</div>
+        <h3 class="pilar-titulo">Capacitación del Equipo</h3>
+        <p class="pilar-sub">Staff · Cultura Cervecera · Servicio</p>
+        <p class="pilar-desc">Formación técnica del personal de planta, entrenamiento en servicio al cliente y cultura cervecera: catas, estilos y maridajes para un equipo verdaderamente diferenciado.</p>
+      </div>
+      <div class="pilar reveal">
+        <div class="pilar-num">05</div>
+        <h3 class="pilar-titulo">Troubleshooting</h3>
+        <p class="pilar-sub">Diagnóstico · Crisis · Soluciones</p>
+        <p class="pilar-desc">Diagnóstico rápido de defectos en el producto: sabores no deseados, contaminación, fallas en carbonatación. Resolución de crisis operativas y de equipos con respuesta inmediata.</p>
+      </div>
+      <div class="pilar reveal" style="display:flex; flex-direction:column; justify-content:center; align-items:center; background:var(--verde); border-top:4px solid var(--terracota);">
+        <p style="font-family:'Oswald',sans-serif; font-size:1.2rem; font-weight:600; text-transform:uppercase; color:var(--blanco); text-align:center; margin-bottom:1.5rem; line-height:1.3;">¿Tu cervecería necesita un diagnóstico?</p>
+        <a href="https://tidycal.com/elorzajazz/discovery-call" target="_blank" class="btn-blanco">Agendar consulta gratuita</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contacto-img">
+    <img src="https://julioelorza.com/wp-content/uploads/2023/04/consultoria-2.jpg" alt="Contacto">
+  </div>
+  <div class="contacto-contenido">
+    <span class="label" style="color:var(--terracota);">Hablemos</span>
+    <h2 class="contacto-titulo">Hablemos de<br>tu <span>proyecto</span></h2>
+    <p class="contacto-sub">Contame tu proyecto. Te respondo personalmente con una propuesta concreta.</p>
+    <form action="https://formspree.io/f/mqejwzpp" method="POST">
+      <input class="form-campo" type="text" name="nombre" placeholder="Tu nombre" required>
+      <input class="form-campo" type="email" name="email" placeholder="Tu email" required>
+      <input class="form-campo" type="tel" name="telefono" placeholder="WhatsApp (opcional)">
+      <textarea class="form-campo" name="mensaje" placeholder="¿En qué puedo ayudarte?"></textarea>
+      <button type="submit" class="btn-enviar">Enviar mensaje</button>
+    </form>
+    <p style="font-size:0.75rem; color:rgba(255,255,255,0.3); margin-top:0.8rem;">O escribime directamente a <a href="mailto:brewlio@julioelorza.com" style="color:var(--dorado); text-decoration:none;">brewlio@julioelorza.com</a></p>
+    <div class="redes">
+      <a href="https://www.instagram.com/brewlio/" target="_blank" class="red">@brewlio</a>
+      <a href="https://www.instagram.com/ofrendavermut/" target="_blank" class="red">@ofrendavermut</a>
+      <a href="https://www.instagram.com/atelierrosso.ba/" target="_blank" class="red">@atelierrosso.ba</a>
+      <a href="https://www.youtube.com/channel/UCFlbgILNCKo3-FAfcKP-ALw" target="_blank" class="red">YouTube</a>
+      <a href="https://ar.linkedin.com/in/brewlio" target="_blank" class="red">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Julio Elorza · Brewmaster · Vermutero · Consultor · Buenos Aires</p>
+  <p>julioelorza.com · <a href="mailto:brewlio@julioelorza.com">brewlio@julioelorza.com</a></p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
